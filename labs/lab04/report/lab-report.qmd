@@ -1,0 +1,89 @@
+---
+## Author
+author:
+  name: Перегудов Александр Вадимович
+  degrees: DSc
+  orcid: 0000-0002-0877-7063
+  email: 1132239659@rudn.ru
+  affiliation:
+    - name: Российский университет дружбы народов
+      country: Российская Федерация
+      postal-code: 117198
+      city: Москва
+      address: ул. Миклухо-Маклая, д. 6
+
+## Title
+title: "Лабораторная работа № 4"
+subtitle: "Имитационное моделирование"
+license: "CC BY"
+---
+
+# Цель работы
+
+Создать агентную модель распространения инфекционного заболевания на основе классической компартментальной модели SIR (Susceptible-Infectious-Recovered).
+
+{{< include ../project/markdown/sir_model/sir_model.qmd >}}
+{{< include ../project/markdown/sir_migration_effect/sir_migration_effect.qmd >}}
+{{< include ../project/markdown/sir_run_basic/sir_run_basic.qmd >}}
+{{< include ../project/markdown/sir_scan_beta/sir_scan_beta.qmd >}}
+{{< include ../project/markdown/sir_visualize_dynamics/sir_visualize_dynamics.qmd >}}
+{{< include ../project/markdown/sir_optimize_parameters/sir_optimize_parameters.qmd >}}
+
+# Задание
+
+# Теоретическое введение
+
+# Выполнение лабораторной работы
+
+Написал скрипт sir_run_basic.jl и запустил его. ([рис. @fig:010, @fig:011, @fig:012])
+
+![Часть скрипта](image/13.png){#fig:010 width=70%}
+
+![Выполнение и результат](image/14.png){#fig:011 width=70%}
+
+![График](image/15.png){#fig:012 width=70%}
+
+![График](image/16.png){#fig:012 width=70%}
+
+Написал базовый скрипт sir_model.jl для запуска одного эксперимента. ([рис. @fig:001])
+
+![Часть скрипта](image/1.png){#fig:001 width=70%}
+
+Написал скрипт sir_scan_beta.jl и запустил его. ([рис. @fig:002, @fig:003, @fig:004])
+
+![Часть скрипта](image/2.png){#fig:002 width=70%}
+
+![Выполнение и результат](image/3.png){#fig:003 width=70%}
+
+![График](image/4.png){#fig:004 width=70%}
+
+Написал скрипт sir_migration_effect.jl и запустил его. ([рис. @fig:005, @fig:006, @fig:007])
+
+![Часть скрипта](image/5.png){#fig:005 width=70%}
+
+![Выполнение и результат](image/6.png){#fig:006 width=70%}
+
+![График](image/7.png){#fig:007 width=70%}
+
+Написал скрипт sir_optimize_parameters.jl и запустил его. ([рис. @fig:008, @fig:009])
+
+![Часть скрипта](image/8.png){#fig:008 width=70%}
+
+![Выполнение и результат](image/9.png){#fig:009 width=70%}
+
+Написал скрипт sir_visualize_dynamics.jl и запустил его. ([рис. @fig:010, @fig:011, @fig:012])
+
+![Часть скрипта](image/10.png){#fig:010 width=70%}
+
+![Выполнение и результат](image/11.png){#fig:011 width=70%}
+
+![График](image/12.png){#fig:012 width=70%}
+ 
+# Выводы
+
+Была создана агентная модель распространения инфекционного заболевания на основе классической компартментальной модели SIR.
+
+# Список литературы{.unnumbered}
+
+::: {#refs}
+:::
