@@ -1,0 +1,590 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  ignorenonframetext,
+  aspectratio=169,
+  russian,
+]{beamer}
+\newif\ifbibliography
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolshorizontal
+% remove section numbering
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{section title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{subsection title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+\usepackage{caption}
+% Make caption package work with longtable
+\makeatletter
+\def\fnum@table{\tablename~\thetable}
+\makeatother
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+
+\ifLuaTeX
+\usepackage[bidi=basic,provide=*]{babel}
+\else
+\usepackage[bidi=default,provide=*]{babel}
+\fi
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+\usepackage[]{csquotes}
+
+\IfFileExists{plex-otf.sty}{
+  %% Full TeXlive
+  % \usepackage[%
+  %   % math,
+  %   RM={Scale=0.94},SS={Scale=0.94},SScon={Scale=0.94},TT={Scale=MatchLowercase,FakeStretch=0.9},DefaultFeatures={Ligatures=Common}
+  % ]{plex-otf}
+}{
+  %% TinyTeX
+  \usepackage{libertine}
+}
+
+%%% Load theme
+% https://deic.uab.cat/~iblanes/beamer_gallery/
+\IfFileExists{beamerthemegotham.sty}{
+  %% Full TeXlive
+  \usetheme{gotham}
+  \gothamset{
+    numbering=totalpagenumber,
+    parttocframe default=off,
+    sectiontocframe default=off,
+    subsectiontocframe default=off,
+  }
+}{
+  %% TinyTeX
+  \usetheme{Madrid}
+}
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Содержание}
+\else
+  \newcommand\contentsname{Содержание}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{Список иллюстраций}
+\else
+  \newcommand\listfigurename{Список иллюстраций}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{Список таблиц}
+\else
+  \newcommand\listtablename{Список таблиц}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Рисунок}
+\else
+  \newcommand\figurename{Рисунок}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Таблица}
+\else
+  \newcommand\tablename{Таблица}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Список}
+\newcommand*\listoflistings{\listof{codelisting}{Листинги}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Структура научной презентации},
+  pdfauthor={Дмитрий Сергеевич Кулябов},
+  pdflang={ru-RU},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{Структура научной презентации}
+\subtitle{Простейший вариант}
+\author{Дмитрий Сергеевич Кулябов}
+\date{2026-04-18}
+
+\begin{document}
+\frame{\titlepage}
+
+\renewcommand*\contentsname{Содержание}
+\begin{frame}[allowframebreaks]
+  \frametitle{Содержание}
+  \setcounter{tocdepth}{1}
+  \tableofcontents
+\end{frame}
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+
+\section{Информация}\label{ux438ux43dux444ux43eux440ux43cux430ux446ux438ux44f}
+
+\begin{frame}{Докладчик}
+\phantomsection\label{ux434ux43eux43aux43bux430ux434ux447ux438ux43a}
+\begin{columns}[c]
+\begin{column}{0.7\linewidth}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  Кулябов Дмитрий Сергеевич
+\item
+  д.ф.-м.н., профессор
+\item
+  профессор кафедры теории вероятностей и кибербезопасности
+\item
+  Российский университет дружбы народов им. П. Лумумбы
+\item
+  \href{mailto:kulyabov-ds@rudn.ru}{\nolinkurl{kulyabov-ds@rudn.ru}}
+\item
+  \url{https://yamadharma.github.io/ru/}
+\end{itemize}
+\end{column}
+
+\begin{column}{0.3\linewidth}
+\pandocbounded{\includegraphics[keepaspectratio]{./image/kulyabov.jpg}}
+\end{column}
+\end{columns}
+\end{frame}
+
+\section{Вводная
+часть}\label{ux432ux432ux43eux434ux43dux430ux44f-ux447ux430ux441ux442ux44c}
+
+\begin{frame}{Актуальность}
+\phantomsection\label{ux430ux43aux442ux443ux430ux43bux44cux43dux43eux441ux442ux44c}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  Важно донести результаты своих исследований до окружающих
+\item
+  Научная презентация --- рабочий инструмент исследователя
+\item
+  Необходимо создавать презентацию быстро
+\item
+  Желательна минимизация усилий для создания презентации
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Объект и предмет исследования}
+\phantomsection\label{ux43eux431ux44aux435ux43aux442-ux438-ux43fux440ux435ux434ux43cux435ux442-ux438ux441ux441ux43bux435ux434ux43eux432ux430ux43dux438ux44f}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  Презентация как текст
+\item
+  Программное обеспечение для создания презентаций
+\item
+  Входные и выходные форматы презентаций
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Цели и задачи}
+\phantomsection\label{ux446ux435ux43bux438-ux438-ux437ux430ux434ux430ux447ux438}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  Создать шаблон презентации в Markdown
+\item
+  Описать алгоритм создания выходных форматов презентаций
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Материалы и методы}
+\phantomsection\label{ux43cux430ux442ux435ux440ux438ux430ux43bux44b-ux438-ux43cux435ux442ux43eux434ux44b}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  Процессор \texttt{pandoc} для входного формата Markdown
+\item
+  Результирующие форматы
+
+  \begin{itemize}[<+->]
+  \tightlist
+  \item
+    \texttt{pdf}
+  \item
+    \texttt{html}
+  \end{itemize}
+\item
+  Автоматизация процесса создания: \texttt{Makefile}
+\end{itemize}
+\end{frame}
+
+\section{Создание
+презентации}\label{ux441ux43eux437ux434ux430ux43dux438ux435-ux43fux440ux435ux437ux435ux43dux442ux430ux446ux438ux438}
+
+\begin{frame}{Процессор \texttt{pandoc}}
+\phantomsection\label{ux43fux440ux43eux446ux435ux441ux441ux43eux440-pandoc}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  Pandoc: преобразователь текстовых файлов
+\item
+  Сайт: \url{https://pandoc.org/}
+\item
+  Репозиторий: \url{https://github.com/jgm/pandoc}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Формат \texttt{pdf}}
+\phantomsection\label{ux444ux43eux440ux43cux430ux442-pdf}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  Использование LaTeX
+\item
+  Пакет для презентации: \href{https://ctan.org/pkg/beamer}{beamer}
+\item
+  Тема оформления: \texttt{metropolis}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Код для формата \texttt{pdf}}
+\phantomsection\label{ux43aux43eux434-ux434ux43bux44f-ux444ux43eux440ux43cux430ux442ux430-pdf}
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{slide\_level}\KeywordTok{:}\AttributeTok{ }\DecValTok{2}
+\FunctionTok{aspectratio}\KeywordTok{:}\AttributeTok{ }\DecValTok{169}
+\FunctionTok{section{-}titles}\KeywordTok{:}\AttributeTok{ }\CharTok{true}
+\FunctionTok{theme}\KeywordTok{:}\AttributeTok{ metropolis}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]{Формат \texttt{html}}
+\phantomsection\label{ux444ux43eux440ux43cux430ux442-html}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  Используется фреймворк \href{https://revealjs.com/}{reveal.js}
+\item
+  Используется \href{https://revealjs.com/themes/}{тема} \texttt{beige}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Код для формата \texttt{html}}
+\phantomsection\label{ux43aux43eux434-ux434ux43bux44f-ux444ux43eux440ux43cux430ux442ux430-html}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  Тема задаётся в файле \texttt{Makefile}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{REVEALJS\_THEME = beige}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\section{Результаты}\label{ux440ux435ux437ux443ux43bux44cux442ux430ux442ux44b}
+
+\begin{frame}[fragile]{Получающиеся форматы}
+\phantomsection\label{ux43fux43eux43bux443ux447ux430ux44eux449ux438ux435ux441ux44f-ux444ux43eux440ux43cux430ux442ux44b}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  Полученный \texttt{pdf}-файл можно демонстрировать в любой программе
+  просмотра \texttt{pdf}
+\item
+  Полученный \texttt{html}-файл содержит в себе все ресурсы:
+  изображения, css, скрипты
+\end{itemize}
+\end{frame}
+
+\section{Элементы
+презентации}\label{ux44dux43bux435ux43cux435ux43dux442ux44b-ux43fux440ux435ux437ux435ux43dux442ux430ux446ux438ux438}
+
+\begin{frame}{Актуальность}
+\phantomsection\label{ux430ux43aux442ux443ux430ux43bux44cux43dux43eux441ux442ux44c-1}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  Даёт понять, о чём пойдёт речь
+\item
+  Следует широко и кратко описать проблему
+\item
+  Мотивировать свое исследование
+\item
+  Сформулировать цели и задачи
+\item
+  Возможна формулировка ожидаемых результатов
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Цели и задачи}
+\phantomsection\label{ux446ux435ux43bux438-ux438-ux437ux430ux434ux430ux447ux438-1}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  Не формулируйте более 1--2 целей исследования
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Материалы и методы}
+\phantomsection\label{ux43cux430ux442ux435ux440ux438ux430ux43bux44b-ux438-ux43cux435ux442ux43eux434ux44b-1}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  Представляйте данные качественно
+\item
+  Количественно, только если крайне необходимо
+\item
+  Излишние детали не нужны
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Содержание исследования}
+\phantomsection\label{ux441ux43eux434ux435ux440ux436ux430ux43dux438ux435-ux438ux441ux441ux43bux435ux434ux43eux432ux430ux43dux438ux44f}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  Предлагаемое решение задач исследования с обоснованием
+\item
+  Основные этапы работы
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Результаты}
+\phantomsection\label{ux440ux435ux437ux443ux43bux44cux442ux430ux442ux44b-1}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  Не нужны все результаты
+\item
+  Необходимы логические связки между слайдами
+\item
+  Необходимо показать понимание материала
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Итоговый слайд}
+\phantomsection\label{ux438ux442ux43eux433ux43eux432ux44bux439-ux441ux43bux430ux439ux434}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  Запоминается последняя фраза. © Штирлиц
+\item
+  Главное сообщение, которое вы хотите донести до слушателей
+\item
+  Избегайте использовать последний слайд вида \emph{Спасибо за внимание}
+\end{itemize}
+\end{frame}
+
+\section{Рекомендую}\label{ux440ux435ux43aux43eux43cux435ux43dux434ux443ux44e}
+
+\begin{frame}{Принцип 10/20/30}
+\phantomsection\label{ux43fux440ux438ux43dux446ux438ux43f-102030}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  10 слайдов
+\item
+  20 минут на доклад
+\item
+  30 кегль шрифта
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Связь слайдов}
+\phantomsection\label{ux441ux432ux44fux437ux44c-ux441ux43bux430ux439ux434ux43eux432}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  Один слайд --- одна мысль
+\item
+  Нельзя ссылаться на объекты, находящиеся на предыдущих слайдах
+  (например, на формулы)
+\item
+  Каждый слайд должен иметь заголовок
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Количество сущностей}
+\phantomsection\label{ux43aux43eux43bux438ux447ux435ux441ux442ux432ux43e-ux441ux443ux449ux43dux43eux441ux442ux435ux439}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  Человек может одновременно помнить \(7 \pm 2\) элемента
+\item
+  При размещении информации на слайде старайтесь чтобы в сумме слайд
+  содержал не более 5 элементов
+\item
+  Можно группировать элементы так, чтобы визуально было не более 5 групп
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Общие рекомендации}
+\phantomsection\label{ux43eux431ux449ux438ux435-ux440ux435ux43aux43eux43cux435ux43dux434ux430ux446ux438ux438}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  На слайд выносится та информация, которая без зрительной опоры
+  воспринимается хуже
+\item
+  Слайды должны дополнять или обобщать содержание выступления или его
+  частей, а не дублировать его
+\item
+  Информация на слайдах должна быть изложена кратко, чётко и хорошо
+  структурирована
+\item
+  Слайд не должен быть перегружен графическими изображениями и текстом
+\item
+  Не злоупотребляйте анимацией и переходами
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Представление данных}
+\phantomsection\label{ux43fux440ux435ux434ux441ux442ux430ux432ux43bux435ux43dux438ux435-ux434ux430ux43dux43dux44bux445}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  Лучше представить в виде схемы
+\item
+  Менее оптимально представить в виде рисунка, графика, таблицы
+\item
+  Текст используется, если все предыдущие способы отображения информации
+  не подошли
+\end{itemize}
+\end{frame}
+
+
+
+
+\end{document}
