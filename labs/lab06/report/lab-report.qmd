@@ -1,0 +1,84 @@
+---
+## Author
+author:
+  name: Перегудов Александр Вадимович
+  degrees: DSc
+  orcid: 0000-0002-0877-7063
+  email: 1132239659@rudn.ru
+  affiliation:
+    - name: Российский университет дружбы народов
+      country: Российская Федерация
+      postal-code: 117198
+      city: Москва
+      address: ул. Миклухо-Маклая, д. 6
+
+## Title
+title: "Лабораторная работа № 6"
+subtitle: "Имитационное моделирование"
+license: "CC BY"
+---
+
+# Цель работы
+
+Реализовать модель эпидемии SIR (Susceptible–Infectious–Recovered) с использованием сетей Петри.
+
+{{< include ../project/markdown/SIRPetri/SIRPetri.qmd >}}
+{{< include ../project/markdown/sirpetri_run/sirpetri_run.qmd >}}
+{{< include ../project/markdown/sirpetri_scan_parameters/sirpetri_scan_parameters.qmd >}}
+{{< include ../project/markdown/sirpetri_animate/sirpetri_animate.qmd >}}
+{{< include ../project/markdown/sirpetri_report/sirpetri_report.qmd >}}
+
+# Задание
+
+# Теоретическое введение
+
+# Выполнение лабораторной работы
+
+Написал скрипт базовый скрипт SIRPetri.jl. ([рис. @fig:001])
+
+![Часть скрипта](image/1.png){#fig:001 width=70%}
+
+Написал скрипт sirpetri_run.jl и запустил его. ([рис. @fig:002, @fig:003, @fig:004, @fig:005])
+
+![Скрипт](image/2.png){#fig:002 width=70%}
+
+![Выполнение и результат](image/3.png){#fig:003 width=70%}
+
+![График](image/4.png){#fig:004 width=70%}
+
+![График](image/5.png){#fig:005 width=70%}
+
+Написал скрипт sirpetri_scan_parameters.jl и запустил его. ([рис. @fig:006, @fig:007, @fig:008])
+
+![Скрипт](image/6.png){#fig:006 width=70%}
+
+![Выполнение и результат](image/7.png){#fig:007 width=70%}
+
+![График (График)](image/8.png){#fig:008 width=70%}
+
+Написал скрипт sirpetri_animate.jl и запустил его. ([рис. @fig:009, @fig:010, @fig:011])
+
+![Скрипт](image/9.png){#fig:009 width=70%}
+
+![Выполнение и результат](image/10.png){#fig:010 width=70%}
+
+![Графики](image/11.png){#fig:011 width=70%}
+
+Написал скрипт sirpetri_report.jl и запустил его. ([рис. @fig:012, @fig:013, @fig:014, @fig:015])
+
+![Скрипт](image/12.png){#fig:012 width=70%}
+
+![Выполнение и результат](image/13.png){#fig:013 width=70%}
+
+![График](image/14.png){#fig:014 width=70%}
+
+![График](image/15.png){#fig:015 width=70%}
+ 
+# Выводы
+
+Была реализована модель эпидемии SIR (Susceptible–Infectious–Recovered) с использованием сетей Петри.
+
+# Список литературы{.unnumbered}
+
+::: {#refs}
+:::
