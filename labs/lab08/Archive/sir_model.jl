@@ -1,0 +1,92 @@
+module sir_model
+
+using ConcurrentSim, ResumableFunctions
+using Distributions, Random
+using DataFrames
+
+export SIRPerson, SIRModel, MakeSIRModel, activate, sir_run, out
+
+increment!(a) = push!(a, a[end] + 1)
+decrement!(a) = push!(a, a[end] - 1)
+carryover!(a) = push!(a, a[end])
+
+mutable struct SIRPerson
+    id::Int
+    status::Symbol
+end
+
+mutable struct SIRModel
+    sim::Simulation
+    β::Float64
+    c::Float64
+    γ::Float64
+    ta::Vector{Float64}
+    Sa::Vector{Int64}
+    Ia::Vector{Int64}
+    Ra::Vector{Int64}
+    allIndividuals::Vector{SIRPerson}
+end
+
+function infection_update!(sim::Simulation, m::SIRModel)
+    push!(m.ta, now(sim))
+    decrement!(m.Sa)
+    increment!(m.Ia)
+    carryover!(m.Ra)
+end
+
+function recovery_update!(sim::Simulation, m::SIRModel)
+    push!(m.ta, now(sim))
+    carryover!(m.Sa)
+    decrement!(m.Ia)
+    increment!(m.Ra)
+end
+
+@resumable function live(env::Simulation, ind::SIRPerson, m::SIRModel)
+    while ind.status == :S
+        @yield timeout(env, rand(Exponential(1/m.c)))
+        N = length(m.allIndividuals)
+        alter = ind
+        while alter == ind
+            alter = m.allIndividuals[rand(DiscreteUniform(1, N))]
+        end
+        if alter.status == :I && rand() < m.β
+            ind.status = :I
+            infection_update!(env, m)
+        end
+    end
+    if ind.status == :I
+        @yield timeout(env, rand(Exponential(1/m.γ)))
+        ind.status = :R
+        recovery_update!(env, m)
+    end
+end
+
+function MakeSIRModel(u0::Vector{Int}, p::Vector{Float64})
+    S, I, R = u0
+    N = S + I + R
+    β, c, γ = p
+    sim = Simulation()
+    allIndividuals = SIRPerson[]
+    for i in 1:S push!(allIndividuals, SIRPerson(i, :S)) end
+    for i in S+1:S+I push!(allIndividuals, SIRPerson(i, :I)) end
+    for i in S+I+1:N push!(allIndividuals, SIRPerson(i, :R)) end
+    ta = Float64[0.0]
+    Sa = Int64[S]; Ia = Int64[I]; Ra = Int64[R]
+    SIRModel(sim, β, c, γ, ta, Sa, Ia, Ra, allIndividuals)
+end
+
+function activate(m::SIRModel)
+    for ind in m.allIndividuals
+        @process live(m.sim, ind, m)
+    end
+end
+
+function sir_run(m::SIRModel, tf::Float64)
+    run(m.sim, tf)
+end
+
+function out(m::SIRModel)
+    DataFrame(t=m.ta, S=m.Sa, I=m.Ia, R=m.Ra)
+end
+
+end
